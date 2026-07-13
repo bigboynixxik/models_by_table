@@ -17,7 +17,7 @@ class Company(BaseModel):
     # TODO: Заменить на реальное имя таблицы
     __tablename__ = 'companies'
     # TODO: Если схема отличается от dbo, то раскомментировать строку ниже
-    # __table_args__ = {"schema": "dbo"}
+    # __table_args__ = {"schema": "schema_name"}
 
     inn: Mapped[str] = mapped_column(
         "INN", String(12), primary_key=True, nullable=False
@@ -37,7 +37,7 @@ class Company(BaseModel):
         server_default=func.sysdatetime()
     )
 
-    company_info_parse: Mapped[Optional[str]] = mapped_column(
+    company_info_parse_html: Mapped[Optional[str]] = mapped_column(
         "CompanyInfoParse", Text, nullable=True
     )
 
@@ -45,15 +45,15 @@ class Company(BaseModel):
         "Status", String(30), nullable=False
     )
 
-    raw_data: Mapped[Optional[str]] = mapped_column(
+    raw_data_html: Mapped[Optional[str]] = mapped_column(
         "raw_data", Text, nullable=True
     )
 
-    raw_ukd: Mapped[Optional[str]] = mapped_column(
+    raw_ukd_html: Mapped[Optional[str]] = mapped_column(
         "raw_ukd", Text, nullable=True
     )
 
-    ukd_info_parse: Mapped[Optional[str]] = mapped_column(
+    ukd_info: Mapped[Optional[str]] = mapped_column(
         "UKDInfoParse", Text, nullable=True
     )
 
